@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "908726879367",
+    "firebase_url": "https://food-delivery-ccf7d-default-rtdb.firebaseio.com",
+    "project_id": "food-delivery-ccf7d",
+    "storage_bucket": "food-delivery-ccf7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908726879367:android:eea5c6c4956528019d2422",
+        "android_client_info": {
+          "package_name": "com.mohamedwagdy4153.food_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908726879367-cd3h4qnsmqts04d3btvtg8tgijjvh8md.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mohamedwagdy4153.food_app",
+            "certificate_hash": "108a446aaf66b762b827d34a4a9310aea6a8d3ce"
+          }
+        },
+        {
+          "client_id": "908726879367-rtcqt0io0kvu2jk1ue5jknqcjurpdbjd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaelvYLKm_7qgqh2zm4OFBhldvJmgYwPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908726879367-rtcqt0io0kvu2jk1ue5jknqcjurpdbjd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "908726879367-n58jgjlmoeaes3hfack1o77u9pst368s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mohamedwagdy4153.foodApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908726879367:android:eeca4aabf1fb103d9d2422",
+        "android_client_info": {
+          "package_name": "com.mohamedwagdy4153.food_delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908726879367-sqig37ifmfmbdhks3k24tscql1b4a5pt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mohamedwagdy4153.food_delivery",
+            "certificate_hash": "108a446aaf66b762b827d34a4a9310aea6a8d3ce"
+          }
+        },
+        {
+          "client_id": "908726879367-rtcqt0io0kvu2jk1ue5jknqcjurpdbjd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaelvYLKm_7qgqh2zm4OFBhldvJmgYwPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908726879367-rtcqt0io0kvu2jk1ue5jknqcjurpdbjd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "908726879367-n58jgjlmoeaes3hfack1o77u9pst368s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mohamedwagdy4153.foodApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
