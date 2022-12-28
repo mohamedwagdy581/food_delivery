@@ -44,6 +44,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Slider Section
         Container(
           height: _pageViewheight,
           child: PageView.builder(
@@ -53,6 +54,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 return _buildPageItem(position);
               }),
         ),
+        // Dots
         DotsIndicator(
           dotsCount: 5,
           position: currentPageValue,
@@ -64,6 +66,106 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 borderRadius: BorderRadius.circular(Dimensions.radius5)),
           ),
         ),
+        // Popular Text
+        SizedBox(width: Dimensions.height30,),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: 'Popular',),
+              SizedBox(width: Dimensions.width10,),
+              Container(
+                margin: const EdgeInsets.only(bottom: 3),
+                child: BigText(text: '.',color: Colors.black26,),
+              ),
+              SizedBox(width: Dimensions.width10,),
+              Container(
+                margin: const EdgeInsets.only(bottom: 2),
+                child: SmallText(text: 'Food Pairing',),
+              ),
+            ],
+          ),
+        ),
+        // Some Food images and small details
+        SizedBox(
+          height: Dimensions.height15,
+        ),
+        ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 10,
+            itemBuilder: (context, index)
+        {
+          return Container(
+            margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, bottom: Dimensions.height15,),
+            child: Row(
+              children: [
+                // Image Section
+                Container(
+                  height: Dimensions.listViewImgSize,
+                  width: Dimensions.listViewImgSize,
+                  decoration: BoxDecoration(
+                    color: Colors.white38,
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
+                    image: const DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                        'https://img.freepik.com/free-photo/traditional-azerbaijani-dish-served-with-yogurt-olives_114579-4520.jpg?t=st=1672036924~exp=1672037524~hmac=96ba9a0bdf70295c60deab9403dc39e5e6989d870fcf43c915fee88be65078a6',
+                      ),
+                    ),
+                  ),
+                ),
+
+                // Text Container Section
+                Expanded(
+                  child: Container(
+                    height: Dimensions.listViewTextContSize,
+                    padding: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(Dimensions.radius20),
+                        bottomRight: Radius.circular(Dimensions.radius20),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        BigText(text: 'Nutritious Fruit Meal in China',),
+                        SizedBox(height: Dimensions.height10,),
+                        SmallText(text: 'With chinese characteristics'),
+                        SizedBox(height: Dimensions.height10,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconAndTextWidget(
+                              icon: Icons.circle_sharp,
+                              iconColor: AppColors.iconColor1,
+                              text: 'Normal',
+                            ),
+                            IconAndTextWidget(
+                              icon: Icons.location_on,
+                              iconColor: AppColors.mainColor,
+                              text: '1.7km',
+                            ),
+                            IconAndTextWidget(
+                              icon: Icons.access_time_rounded,
+                              iconColor: AppColors.iconColor2,
+                              text: '32min',
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }),
+
       ],
     );
   }

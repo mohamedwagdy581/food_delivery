@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/home/food_page_body.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 
-import '../widgets/big_text.dart';
+import '../../widgets/big_text.dart';
+import 'food_page_body.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);
@@ -20,8 +20,9 @@ class _MainFoodPageState extends State<MainFoodPage> {
     print('The Width is ${MediaQuery.of(context).size.width}');
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: ListView(
           children: [
+            //Upper Country and search section
             Container(
               child: Container(
                 margin: EdgeInsets.only(top: Dimensions.height15, bottom: Dimensions.height15,),
@@ -57,6 +58,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
                 ),
               ),
             ),
+            // The Body of Main Food Page
             const FoodPageBody(),
           ],
         ),
