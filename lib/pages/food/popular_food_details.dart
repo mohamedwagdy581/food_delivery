@@ -1,17 +1,24 @@
+
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/expandable_text_widget.dart';
 import 'package:food_delivery/widgets/small_details_column.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
+import 'package:get/get.dart';
 
+import '../../controller/popular_product_controller.dart';
+import '../../utils/app_constants.dart';
 import '../../utils/colors.dart';
 
 class PopularFoodDetails extends StatelessWidget {
-  const PopularFoodDetails({Key? key}) : super(key: key);
+  final int pageId;
+  const PopularFoodDetails({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<PopularProductController>().popularProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -23,11 +30,11 @@ class PopularFoodDetails extends StatelessWidget {
             child: Container(
               width: double.maxFinite,
               height: Dimensions.popularFoodImgSize,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                    'https://img.freepik.com/free-photo/traditional-azerbaijani-dish-served-with-yogurt-olives_114579-4520.jpg?t=st=1672036924~exp=1672037524~hmac=96ba9a0bdf70295c60deab9403dc39e5e6989d870fcf43c915fee88be65078a6',
+                    AppConstants.BASE_URL+AppConstants.UPLOAD_URL+product.img!
                   ),
                 ),
               ),
@@ -42,7 +49,10 @@ class PopularFoodDetails extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AppIcon(
-                  onTap: () {},
+                  onTap: ()
+                  {
+                    Get.to(()=> const MainFoodPage());
+                  },
                   icon: Icons.arrow_back_ios,
                 ),
                 AppIcon(
@@ -79,7 +89,7 @@ class PopularFoodDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppSmallDetailsColumn(
-                    text: 'Burger',
+                    text: product.name!,
                     textSize: Dimensions.font26,
                   ),
                   SizedBox(
@@ -92,11 +102,10 @@ class PopularFoodDetails extends StatelessWidget {
                   SizedBox(
                     height: Dimensions.height30,
                   ),
-                  const Expanded(
+                  Expanded(
                     child: SingleChildScrollView(
                       child: ExpandableTextWidget(
-                        text:
-                            'After whole month cooking big arabic meals for Ramadan, we need a break. Kids loved having burgers for breaking the fast as a change.After whole month cooking big arabic meals for Ramadan, we need a break. Kids loved having burgers for breaking the fast as a change.',
+                        text: product.description!,
                       ),
                     ),
                   ),
@@ -175,7 +184,7 @@ class PopularFoodDetails extends StatelessWidget {
                 ),
               ),
               child: BigText(
-                text: '\$10 | Add to Cart',
+                text: '\$ ${product.price!} | Add to Cart',
                 color: Colors.white,
               ),
             ),

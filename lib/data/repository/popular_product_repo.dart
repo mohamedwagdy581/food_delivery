@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:get/get.dart';
 
 import '../api/api_client.dart';
@@ -9,8 +10,8 @@ class PopularProductRepo extends GetxService
 
   PopularProductRepo({required this.apiClient});
 
-  Future<Response> getpopularproductList() async
+  Future<Response> getPopularProductList() async
   {
-    return Response();
+    return await apiClient.getData(AppConstants.POPULAR_PRODUCT_URI);
   }
 }

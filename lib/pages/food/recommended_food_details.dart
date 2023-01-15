@@ -1,27 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controller/recommended_product_controller.dart';
+import 'package:food_delivery/route/route_helper.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/expandable_text_widget.dart';
-import 'package:food_delivery/widgets/small_text.dart';
+import 'package:get/get.dart';
+
+import '../../utils/app_constants.dart';
 
 class RecommendedFoodDetails extends StatelessWidget {
-  const RecommendedFoodDetails({Key? key}) : super(key: key);
+  final int pageId;
+  const RecommendedFoodDetails({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<RecommendedProductController>().recommendedProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             toolbarHeight: 70,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AppIcon(
-                  onTap: () {},
+                  onTap: ()
+                  {
+                    Get.toNamed(RouteHelper.getInitial());
+                  },
                   icon: Icons.clear,
                 ),
                 AppIcon(
@@ -35,7 +45,7 @@ class RecommendedFoodDetails extends StatelessWidget {
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.network(
-                'https://img.freepik.com/free-photo/traditional-azerbaijani-dish-served-with-yogurt-olives_114579-4520.jpg?t=st=1672036924~exp=1672037524~hmac=96ba9a0bdf70295c60deab9403dc39e5e6989d870fcf43c915fee88be65078a6',
+                AppConstants.BASE_URL+AppConstants.UPLOAD_URL+product.img!,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -60,7 +70,7 @@ class RecommendedFoodDetails extends StatelessWidget {
                       ),
                     )),
                 child: BigText(
-                  text: 'Chinese Side',
+                  text: product.name!,
                   size: Dimensions.font26,
                 ),
               ),
@@ -74,9 +84,8 @@ class RecommendedFoodDetails extends StatelessWidget {
                     left: Dimensions.width20,
                     right: Dimensions.width20,
                   ),
-                  child: const ExpandableTextWidget(
-                    text:
-                        'After whole month cooking big arabic meals for Ramadan, we need a break. Kids loved having burgers for breaking the fast as a change.After whole month cooking big arabic meals for Ramadan, we need a break. Kids loved having burgers for breaking the fast as a change.After whole month cooking big arabic meals for Ramadan, we need a break. Kids loved having burgers for breaking the fast as a change.After whole month cooking big arabic meals for Ramadan, we need a break. Kids loved having burgers for breaking the fast as a change.After whole month cooking big arabic meals for Ramadan, we need a break. Kids loved having burgers for breaking the fast as a change.After whole month cooking big arabic meals for Ramadan, we need a break. Kids loved having burgers for breaking the fast as a change.',
+                  child: ExpandableTextWidget(
+                    text: product.description!,
                   ),
                 ),
               ],
@@ -105,7 +114,7 @@ class RecommendedFoodDetails extends StatelessWidget {
                   iconColor: Colors.white,
                 ),
                 BigText(
-                  text: '\$12.88 ' + 'X  '+ '0',
+                  text: '\$ ${product.price!} X  0',
                   //color: AppColors.mainBlackColor,
                   size: Dimensions.font26,
                 ),
@@ -170,7 +179,7 @@ class RecommendedFoodDetails extends StatelessWidget {
                     ),
                   ),
                   child: BigText(
-                    text: '\$10 | Add to Cart',
+                    text: '\$ ${product.price!} | Add to Cart',
                     color: Colors.white,
                   ),
                 ),
