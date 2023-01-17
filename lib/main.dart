@@ -1,12 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/controller/popular_product_controller.dart';
-import 'package:food_delivery/controller/recommended_product_controller.dart';
-import 'package:food_delivery/pages/food/popular_food_details.dart';
-import 'package:food_delivery/pages/food/recommended_food_details.dart';
-import 'package:food_delivery/pages/home/food_page_body.dart';
-import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:get/get.dart';
+import 'controller/popular_product_controller.dart';
+import 'controller/recommended_product_controller.dart';
 import 'helper/dependencies.dart' as dep;
 import 'route/route_helper.dart';
 
@@ -30,7 +26,6 @@ class MyApp extends StatelessWidget {
       title: 'Food Delivery',
       initialRoute: RouteHelper.initial,
       getPages: RouteHelper.route,
-      home: MainFoodPage(),
     );
   }
 }
