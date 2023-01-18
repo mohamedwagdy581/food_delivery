@@ -14,6 +14,8 @@ class CartController extends GetxController
 
   Map<int, CartModel> _items = {};
   Map<int, CartModel> get items => _items;
+  // only for storage and sharedPreferences
+  List<CartModel> storageItems = [];
 
   void addItem(ProductModel product, int quantity)
   {
@@ -61,6 +63,7 @@ class CartController extends GetxController
         Get.snackbar('Item Count', "You should at least add an item in the cart !", backgroundColor: AppColors.mainColor, colorText: Colors.white);
       }
     }
+    cartRepo.addToCartList(getItems);
     update();
   }
 
@@ -116,5 +119,33 @@ class CartController extends GetxController
       total += value.quantity! * value.price!;
     });
     return total;
+  }
+
+  List<CartModel> getCartData()
+  {
+    setCart = cartRepo.getCartList();
+    return storageItems;
+  }
+
+  set setCart(List<CartModel> items)
+  {
+    storageItems = items;
+    //print('Lenght of cart items ${storageItems.length}');
+    for(int i = 0; i< storageItems.length; i++)
+    {
+      _items.putIfAbsent(storageItems[i].product!.id!, () => storageItems[i]);
+    }
+  }
+
+  void addToHistory()
+  {
+    cartRepo.addToCartHistoryList();
+    clear();
+  }
+
+  void clear()
+  {
+    _items = {};
+    update();
   }
 }

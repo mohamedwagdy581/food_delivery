@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controller/cart_controller.dart';
+import 'package:food_delivery/pages/splash/splash_page.dart';
 import 'package:get/get.dart';
 import 'controller/popular_product_controller.dart';
 import 'controller/recommended_product_controller.dart';
@@ -19,14 +21,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.find<PopularProductController>().getPopularProductList();
-    Get.find<RecommendedProductController>().getRecommendedProductList();
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Food Delivery',
-      initialRoute: RouteHelper.initial,
-      getPages: RouteHelper.route,
-    );
+    Get.find<CartController>().getCartData();
+    return GetBuilder<PopularProductController>(builder: (_)
+    {
+      return GetBuilder<RecommendedProductController>(builder: (_)
+      {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Food Delivery',
+          //home: SplashScreen(),
+          initialRoute: RouteHelper.getSplashPage(),
+          getPages: RouteHelper.route,
+        );
+      });
+    });
   }
 }
 
