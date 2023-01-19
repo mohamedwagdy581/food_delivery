@@ -54,4 +54,7 @@ class Dimensions
 
   // Splash Screen Dimensions
   static double splashImg = screenHeight / 3.1;
+
+  // Splash Screen Dimensions
+  static double cartHistory = screenHeight / 11.65;
 }
