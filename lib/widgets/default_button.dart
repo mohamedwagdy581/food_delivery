@@ -20,8 +20,8 @@ class DefaultButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Dimensions.height45,
-      width: Dimensions.width45*4,
+      height: Dimensions.screenHeight/13,
+      width: Dimensions.screenWidth/2,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Dimensions.radius10),
       ),

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'controller/popular_product_controller.dart';
 import 'controller/recommended_product_controller.dart';
 import 'helper/dependencies.dart' as dep;
+import 'pages/auth/sign_in_page.dart';
 import 'route/route_helper.dart';
 
 Future<void> main() async {
@@ -29,9 +30,9 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Food Delivery',
-          //home: SplashScreen(),
-          initialRoute: RouteHelper.getSplashPage(),
-          getPages: RouteHelper.route,
+          home: SignInPage(),
+          //initialRoute: RouteHelper.getSplashPage(),
+          //getPages: RouteHelper.route,
         );
       });
     });
