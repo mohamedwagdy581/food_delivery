@@ -53,7 +53,7 @@ class DefaultTextFormField extends StatelessWidget {
         onTap: onTap,
         enabled: isClickable,
         validator: validator,
-        obscureText: secure,
+        obscureText: secure?true:false,
         onFieldSubmitted: onSubmitted,
         decoration: InputDecoration(
             labelText: label,
